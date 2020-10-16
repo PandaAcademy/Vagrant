@@ -54,6 +54,7 @@ Vagrant.configure("2") do |config|
     mv apache-maven-3.6.3 maven
     rm apache-maven-3.6.3-bin.tar.gz awscliv2.zip terraform_0.13.2_linux_amd64.zip
     git clone https://github.com/PandaAcademy/panda_env
+    git checkout feature/infrastructure
     cd panda_env
     ./start.sh
   EOF
