@@ -42,7 +42,10 @@ Vagrant.configure("2") do |config|
     tar -xvf apache-maven-3.6.3-bin.tar.gz
     mv apache-maven-3.6.3 maven
     rm apache-maven-3.6.3-bin.tar.gz
-    docker run -d --name jenkins -p 8880:8080 -p 50000:50000 pandaacademy/jenkins:1.0
-    docker run -d --name artifactory -p 8081:8081 -p 8082:8082 pandaacademy/artifactory:1.0
+    docker network create -d bridge docker_network
+    docker run -d --name jenkins --network=docker_network -p 8880:8080 -p 50000:50000 pandaacademy/jenkins:1.0
+    docker run -d --name artifactory --network=docker_network -p 8081:8081 -p 8082:8082 pandaacademy/artifactory:1.0
+    docker run -d -p 4444:4444 --name selenium-hub --network=docker_network  selenium/hub
+    docker run -d --name selenium-node --network=docker_network -e HUB_HOST=selenium-hub  selenium/node-firefox
   EOF
 end
