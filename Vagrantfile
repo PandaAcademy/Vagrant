@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     mkdir -p /home/panda/.ssh/
     cp /home/vagrant/.ssh/authorized_keys /home/panda/.ssh/authorized_keys
     chown -R panda:panda /home/panda
-    chown panda:docker /var/run/docker.sock
+    chown -R panda:docker /var/run/docker.sock /usr/local/bin/
   EOF
 
   config.vm.provision "shell", privileged: true, inline: <<-EOF
@@ -42,10 +42,8 @@ Vagrant.configure("2") do |config|
     tar -xvf apache-maven-3.6.3-bin.tar.gz
     mv apache-maven-3.6.3 maven
     rm apache-maven-3.6.3-bin.tar.gz
-    docker network create -d bridge docker_network
-    docker run -d --name jenkins --network=docker_network -p 8880:8080 -p 50000:50000 pandaacademy/jenkins:1.0
-    docker run -d --name artifactory --network=docker_network -p 8081:8081 -p 8082:8082 pandaacademy/artifactory:1.0
-    docker run -d -p 4444:4444 --name selenium-hub --network=docker_network  selenium/hub
-    docker run -d --name selenium-node --network=docker_network -e HUB_HOST=selenium-hub  selenium/node-firefox
+    git clone https://github.com/PandaAcademy/panda_env
+    cd panda_env
+    ./start.sh
   EOF
 end
