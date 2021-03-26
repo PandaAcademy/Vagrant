@@ -46,13 +46,13 @@ Vagrant.configure("2") do |config|
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
-    wget https://releases.hashicorp.com/terraform/0.13.2/terraform_0.13.2_linux_amd64.zip
-    unzip terraform_0.13.2_linux_amd64.zip
+    wget https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_linux_amd64.zip
+    unzip terraform_0.14.9_linux_amd64.zip
     sudo mv terraform /bin/
     wget http://ftp.man.poznan.pl/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
     tar -xvf apache-maven-3.6.3-bin.tar.gz
     mv apache-maven-3.6.3 maven
-    rm apache-maven-3.6.3-bin.tar.gz awscliv2.zip terraform_0.13.2_linux_amd64.zip
+    rm apache-maven-3.6.3-bin.tar.gz awscliv2.zip terraform_0.14.9_linux_amd64.zip
     git clone https://github.com/PandaAcademy/panda_env
     cd panda_env
     ./start.sh
