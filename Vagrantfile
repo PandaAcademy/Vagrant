@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     apt-get install -y default-jre
     sudo su panda
     cd /home/panda
-    wget http://ftp.man.poznan.pl/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    wget https://dlcdn.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
     tar -xvf apache-maven-3.6.3-bin.tar.gz
     mv apache-maven-3.6.3 maven
     rm apache-maven-3.6.3-bin.tar.gz
